@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('ugd', function (Blueprint $table) {
             $table->string('id', 36)->primary();
-            $table->string('pas_umum_id');
-            $table->string('pas_td_id');
+            $table->string('pas_id');
+           // $table->string('pas_td_id');
             $table->string('pen_jaw_id');
             $table->string('peng_id');
             $table->string('bayi_id')->nullable();

@@ -18,10 +18,10 @@ class Ugd extends Model
         return $this->belongsTo(Pasien::class, 'pasien');
     }
 
-    public function pasienb()
-    {
-        return $this->belongsTo(Pasienb::class, 'pasienb');
-    }
+    // public function pasienb()
+    // {
+    //     return $this->belongsTo(Pasienb::class, 'pasienb');
+    // }
 
     public function penanggungjawab()
     {

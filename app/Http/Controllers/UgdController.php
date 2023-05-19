@@ -89,8 +89,8 @@ class UgdController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'pas_umum_id' => 'required|max:255|string',
-            'pas_td_id' => 'required|max:255|string',
+            'pas_id' => 'required|max:255|string',
+            //'pas_td_id' => 'required|max:255|string',
             'pen_jaw_id' => 'required|max:255|string',
             'peng_id' => 'required|max:255|string',
             'bayi_id' => 'required|max:255|string',
@@ -116,7 +116,7 @@ class UgdController extends Controller
         ]);
         $asuransi = Asuransi::where('id', $request->asuransi)->first();
         $pasien = Pasien::where('id', $request->pasien)->first();
-        $pasienb =Pasienb::where('id', $request->pasienb)->first();
+        //$pasienb =Pasienb::where('id', $request->pasienb)->first();
         $pen_jaw = Penanggungjawab::where('id', $request->penanggungjawab)->first();
         $pengantar = Pengantar::where('id', $request->pengantar)->first();
         $bbl = Bbl::where('id', $request->bbl)->first;
@@ -136,8 +136,8 @@ class UgdController extends Controller
         // ];
 
         $ugd = Ugd::create([
-            'pas_umum_id' => $request->pas_umum_id,
-            'pas_td_id' => $request->pas_td_id,
+            'pas_id' => $request->pas_umum_id,
+            //'pas_td_id' => $request->pas_td_id,
             'pen_jaw_id' => $request->pen_jaw_id,
             'peng_id' => $request->peng_id,
             'bayi_id' => $request->bayi_id,
@@ -163,8 +163,8 @@ class UgdController extends Controller
         ]);
 
         $oldData = $this->temp->ugdStore($request->bearerToken(), [
-            'pas_umum_id' => $pasien->id,
-            'pas_td_id' => $pasienb->id,
+            'pas_id' => $pasien->id,
+            //'pas_td_id' => $pasienb->id,
             'pen_jaw_id' => $pen_jaw->id,
             'peng_id' => $pengantar->id,
             'bayi_id' => $bbl->id,
@@ -225,8 +225,8 @@ class UgdController extends Controller
     {
         $ugd = $this->getData($request);
         $this->validate($request, [
-            'pas_umum_id' => 'required|max:255|string',
-            'pas_td_id' => 'required|max:255|string',
+            'pas_id' => 'required|max:255|string',
+            //'pas_td_id' => 'required|max:255|string',
             'pen_jaw_id' => 'required|max:255|string',
             'peng_id' => 'required|max:255|string',
             'bayi_id' => 'required|max:255|string',
@@ -257,8 +257,8 @@ class UgdController extends Controller
         $lahir = Carbon::parse($request->tanggal_lahir);
         $umur = Carbon::now()->diffInYears($lahir);
 
-        $ugd->pas_umum_id = $request->pas_umum_id;
-        $ugd->pas_td_id = $request->pas_td_id;
+        $ugd->pas_id = $request->pas_id;
+       // $ugd->pas_td_id = $request->pas_td_id;
         $ugd->pen_jaw_id = $request->pen_jaw_id;
         $ugd->peng_id = $request->peng_id;
         $ugd->bayi_id = $request->bayi_id;
