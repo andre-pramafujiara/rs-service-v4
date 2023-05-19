@@ -650,5 +650,35 @@ $router->group(['middleware' => 'after'], function () use ($router) {
             'as' => 'pasienb.update', 'uses' => 'PasienbController@update', 'middleware' => 'api:pasienb:update'
         ]);
     });
+
+    $router->group(['prefix' => 'antrian'], function() use($router){
+        $router->get('/', [
+            'as' => 'antrian.index', 'uses' => 'AntrianUgdController@index', 'middleware' => 'api:antrianugd:all'
+        ]);
+
+        $router->get('/list', [
+            'as' => 'antrian.ambilantrian', 'uses' => 'AntrianUgdController@list', 'middleware' => 'api:antrianugd:store'
+        ]);
+
+        $router->get('/list', [
+            'as' => 'antrian.bukaantrian', 'uses' => 'AntrianUgdController@list', 'middleware' => 'api:antrianugd:store'
+        ]);
+
+        $router->get('/show', [
+            'as' => 'pasienb.show', 'uses' => 'PasienbController@show', 'middleware' => 'api:pasienb:show'
+        ]);
+
+        $router->post('/', [
+            'as' => 'pasienb.store', 'uses' => 'PasienbController@store', 'middleware' => 'api:pasienb:store'
+        ]);
+
+        $router->delete('/', [
+            'as' => 'pasienb.destroy', 'uses' => 'PasienbController@destroy', 'middleware' => 'api:pasienb:destroy'
+        ]);
+
+        $router->patch('/', [
+            'as' => 'pasienb.update', 'uses' => 'PasienbController@update', 'middleware' => 'api:pasienb:update'
+        ]);
+    });
     
 });

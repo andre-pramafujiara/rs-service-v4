@@ -89,8 +89,23 @@ class Temp
 		return $this->performRequest('GET', '/dokter/list', $data, $this->bearerFormatter($token));
 	}
 
-	public function UgdStore($token, $data)
+	public function ugdStore($token, $data)
 	{
 		return $this->performRequest('POST', '/ugd', $data, $this->bearerFormatter($token));
+	}
+
+	public function ugdIndex($token, $data)
+	{
+		return $this->performRequest('GET', '/ugd', $data, $this->bearerFormatter($token));
+	}
+
+	public function ugdUpdate($token, $data)
+	{
+		return $this->performRequest('PUT', '/ugd', $data, $this->bearerFormatter($token));
+	}
+
+	public function ugdDestroy($token, $data)
+	{
+		return $this->performRequest('DELETE', '/ugd', $data, $this->bearerFormatter($token));
 	}
 }

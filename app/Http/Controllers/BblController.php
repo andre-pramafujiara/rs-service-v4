@@ -13,7 +13,7 @@ class BblController extends Controller
 
     public function index(Request $request)
     {
-        //return $this->responseFormatterWithMeta($this->httpCode['StatusOK'], $this->httpMessage['StatusOK'], Asuransi::select('id', 'name', 'kode_rs', 'kode_bpjs')->orderBy('created_at', 'desc')->cursorPaginate($request->input('per_page', 15)));
+        return $this->responseFormatterWithMeta($this->httpCode['StatusOK'], $this->httpMessage['StatusOK'], Bbl::select('id', 'nama_bayi', 'jk_bayi')->orderBy('created_at', 'desc')->cursorPaginate($request->input('per_page', 15)));
     }
 
     public function list()
@@ -24,7 +24,7 @@ class BblController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name_bayi' => 'required|string',
+            'nama_bayi' => 'required|string',
             'nik_ibu_kandung' => 'required|string',
             'no_rm' => 'required|string',
             'tgl_lahir_bayi' => 'required|date',
