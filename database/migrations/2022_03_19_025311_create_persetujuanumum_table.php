@@ -13,23 +13,21 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('triase', function (Blueprint $table) {
+        Schema::create('persetujuanumum', function (Blueprint $table) {
             $table->string('id', 36)->primary();
+            
+            $table->date('tanggal');
+            $table->time('jam');;
             $table->string('id_pasien')->nullable();
-            $table->string('id_perawat')->nullable();
-            $table->string('nama_petugas');
-            $table->date('tanggal_triase');
-            $table->time('jam_triase');
-            $table->string('keluhan');
-            $table->string('triase_esi');
-            $table->string('respon_time');
-            $table->string('id_peng')->nullable();
+            $table->string('id_persetujuanpasien');
+            $table->string('peryataan');
             $table->bigInteger('user_id')->index();
             $table->timestamps();
             $table->softDeletes();
 
             $table->foreign('id_pasien')->references('id')->on('pasien');
-            $table->foreign('id_peng')->references('id')->on('pengantar');
+            $table->foreign('id_persetujuanpasien')->references('id')->on('persetujuanpasien');
+            $table->foreign('pernyataan')->references('id')->on('pernyataan');
             // $table->foreign('id_perawat')->references('id')->on('perawat');
         });
     }
@@ -41,6 +39,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('triase');
+        Schema::dropIfExists('persetujuanumum');
     }
 };
